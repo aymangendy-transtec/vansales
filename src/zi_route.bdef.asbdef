@@ -1,0 +1,45 @@
+managed;
+with draft;
+
+define behavior for zi_route alias Route
+implementation in class zbp_i_route unique
+persistent table ZTROUTE
+draft table ZTROUTE_D
+lock master
+total etag Lastchangedat
+etag master Locallastchangedat
+authorization master ( instance )
+
+{
+
+  field ( readonly ) Route;
+  field ( numbering : managed ) Route;
+
+  create;
+  update;
+  delete;
+  association _Detail { create; }
+
+
+  draft action Resume;
+  draft action Activate;
+  draft action Discard;
+  draft action Edit;
+}
+
+define behavior for zi_route_detail alias Detail
+implementation in class zbp_i_route unique
+persistent table ZTROUTEDETAIL
+draft table ZTROUTEDETAIL_D
+lock dependent by _Route
+authorization dependent by _Route
+etag master Lastchangedat
+early numbering
+{
+  field ( readonly ) Route , Routestep;
+
+  update;
+  delete;
+
+  association _Route;
+}

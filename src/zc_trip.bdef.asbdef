@@ -1,0 +1,38 @@
+projection;
+use draft;
+//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for zc_trip alias Trip
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _TripDetail { create; }
+
+  use action startTrip;
+  use action endTrip;
+}
+
+define behavior for zc_trip_detail alias TripDetail
+{
+  use update;
+  use delete;
+
+  use association _Trip;
+  use association _TripActivity { create; }
+
+  use action goToCustomer;
+  use action arrived;
+  use action depatured;
+
+}
+
+define behavior for zc_trip_activity alias TripActivity
+{
+  use update;
+  use delete;
+
+  use association _Trip;
+  use association _TripDetail;
+}

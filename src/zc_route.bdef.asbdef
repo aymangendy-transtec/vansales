@@ -1,0 +1,21 @@
+projection;
+use draft;
+//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for zc_route alias Route
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Detail{ create; }
+
+}
+
+define behavior for zc_route_detail alias Detail
+{
+  use update;
+  use delete;
+  use association _Route;
+
+}

@@ -1,0 +1,6 @@
+@EndUserText.label: 'service for route'
+define service Zui_route {
+  expose zc_route;
+  expose zc_route_detail;
+  expose zce_tec_customer as Customers;
+}

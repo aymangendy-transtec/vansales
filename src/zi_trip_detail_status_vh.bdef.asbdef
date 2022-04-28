@@ -1,0 +1,14 @@
+managed implementation in class zbp_i_trip_detail_status_vh unique;
+//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for zi_trip_detail_status_vh //alias <alias_name>
+persistent table ZTTRIPSTEPSTATUS
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  field ( numbering : managed ) Tripstepstatusuuid;
+  create;
+  update;
+  delete;
+}

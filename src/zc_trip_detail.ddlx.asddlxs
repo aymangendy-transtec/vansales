@@ -1,0 +1,94 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+  typeName: 'Trip Detail',
+  typeNamePlural: 'Trip Detail',
+  title: { type: #STANDARD, value: 'Tripstep' },
+  description:{ value: 'Customername' }
+  }
+  }
+annotate view zc_trip_detail
+    with 
+{
+    @UI.facet: [{ id: 'TripDetail' ,
+               purpose: #STANDARD,
+               type: #IDENTIFICATION_REFERENCE,
+               label: 'Trip Detail',
+               position: 10
+               },
+               {
+      id: 'DetailActivity',
+      purpose: #STANDARD,
+      type: #LINEITEM_REFERENCE,
+      label: 'Trip Activity',
+      position: 20,
+      targetElement: '_TripActivity'
+    }]
+     @UI: {
+    identification: [{position: 10  }] ,
+    lineItem: [{ position: 10 , importance: #HIGH }]}
+     Routeuuid; 
+     @UI: {
+    identification: [{position: 20 }] ,
+    lineItem: [{ position: 20 , importance: #HIGH }]}
+     Tripid; 
+     @UI: {
+    identification: [{position: 30 }] ,
+    lineItem: [{ position: 30 , importance: #HIGH }]}
+     Tripstep; 
+     @UI: {
+    identification: [{position: 40 , criticality: 'Criticality' },
+                     { type: #FOR_ACTION, dataAction: 'goToCustomer', label: 'Go To Customer' },
+                     { type: #FOR_ACTION, dataAction: 'arrived',   label: 'Arrived' },
+                     { type: #FOR_ACTION, dataAction: 'depatured',   label: 'Depatured' }] ,
+    lineItem: [{ position: 40 , criticality: 'Criticality' ,importance: #HIGH },
+                { type: #FOR_ACTION, dataAction: 'goToCustomer', label: 'Go To Customer' },
+                { type: #FOR_ACTION, dataAction: 'arrived', label: 'Arrived' },
+                { type: #FOR_ACTION, dataAction: 'depatured', label: 'Depatured' }],
+     textArrangement: #TEXT_ONLY,           
+    selectionField: [{position: 40 }]} 
+     Tripstepstatus;
+      @UI: {
+    identification: [{position: 50 }] ,
+    lineItem: [{ position: 50 , importance: #HIGH }]}
+     Arrivaldate;
+      @UI: {
+    identification: [{position: 60 }] ,
+    lineItem: [{ position: 60 , importance: #HIGH }]}
+     Arrivaltime;
+     
+      @UI: {
+    identification: [{position: 90 }] ,
+    lineItem: [{ position: 90 , importance: #HIGH }]}
+     Starttogodate;
+     @UI: {
+    identification: [{position: 100 }] ,
+    lineItem: [{ position: 100 , importance: #HIGH }]}
+     Starttogotime;
+     @UI: {
+    identification: [{position: 110 }] ,
+    lineItem: [{ position: 110 , importance: #HIGH }]}
+     Routestep;
+     @UI: {
+    identification: [{position: 120 }] ,
+    lineItem: [{ position: 120 , importance: #HIGH }]}
+     Customerid;
+     @UI: {
+    identification: [{position: 130 }] ,
+    lineItem: [{ position: 130 , importance: #HIGH }]}
+     Customername;
+     @UI: {
+    identification: [{position: 140 }] ,
+    lineItem: [{ position: 140 , importance: #HIGH }]}
+     Locationaddress;
+      @UI: {
+    identification: [{position: 150 }] ,
+    lineItem: [{ position: 150 , importance: #HIGH }]}
+     Depaturedate;
+     @UI: {
+    identification: [{position: 160 }] ,
+    lineItem: [{ position: 160 , importance: #HIGH }]}
+     Depaturetime;
+   
+  
+}

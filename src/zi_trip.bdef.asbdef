@@ -1,0 +1,71 @@
+managed;
+with draft;
+
+define behavior for zi_trip alias Trip
+implementation in class zbp_i_trip unique
+persistent table ZTTRIP
+draft table      ZTTRIP_D
+lock master
+total etag Lastchangedat
+authorization master ( instance )
+etag master Locallastchangedat
+
+{
+  //field ( mandatory:create , readonly : update) Tripid;
+  field ( readonly ) Tripuuid, Tripid;
+  field ( numbering : managed ) Tripuuid;
+  create;
+  update;
+  delete;
+  association _TripDetail { create; }
+
+  action   startTrip result[1] $self;
+  action   endTrip result[1] $self;
+
+  determination setTripId on modify {create;  }
+
+  draft action Resume;
+  draft action Activate;
+  draft action Discard;
+  draft action Edit;
+}
+
+define behavior for zi_trip_detail alias TripDetail
+implementation in class zbp_i_trip unique
+persistent table ZTTRIPDETAIL
+draft table      ZTTRIPDETAIL_D
+lock dependent by _Trip
+//authorization dependent by _Trip
+etag master Lastchangedat
+early numbering
+{
+  update;
+  delete;
+  field ( readonly ) Tripuuid, Tripstep;
+  field ( features : instance ) Customerid , Customername , Locationaddress;
+  //field ( mandatory:create , readonly : update) Routestep;
+  association _Trip;
+  association _TripActivity { create; }
+
+  action   goToCustomer result[1] $self;
+  action   arrived result[1] $self;
+  action   depatured result[1] $self;
+
+
+}
+
+define behavior for zi_trip_activity alias TripActivity
+implementation in class zbp_i_trip unique
+persistent table ZTTRIPACTIVITY
+draft table      ZTTRIPACTIVITY_D
+lock dependent by _Trip
+//authorization dependent by _Trip
+etag master Locallastchangedat
+early numbering
+{
+  update;
+  delete;
+  field ( readonly ) Tripuuid, Tripstep, Tripactivity, Routeuuid, Routestep, Tripid;
+  association _Trip;
+  association _TripDetail;
+}

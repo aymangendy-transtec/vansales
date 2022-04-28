@@ -1,0 +1,13 @@
+@EndUserText.label: 'service for trip'
+define service Zui_trip {
+  expose zc_trip;
+  expose zc_trip_detail;
+  expose zc_trip_activity;
+  expose zc_route;
+  expose zc_route_detail;
+  expose zce_tec_customer as Customers;
+  expose zi_route_detail_vh;
+  expose zi_trip_status_vh;
+  expose zi_trip_detail_status_vh;
+  expose zi_trip_activity_type_vh;
+}

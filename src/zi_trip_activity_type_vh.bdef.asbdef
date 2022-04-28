@@ -1,0 +1,18 @@
+managed ;
+with draft;
+//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for zi_trip_activity_type_vh //alias <alias_name>
+implementation in class zbp_i_trip_activity_type_vh unique
+persistent table ZTTRIPACTIVTYPE
+draft table      ZTTRIPACTIVTYP_D
+lock master
+total etag Lastchangedat
+authorization master ( instance )
+//etag master <field_name>
+{
+field ( numbering : managed ) Tripactivitytypeuuid;
+  create;
+  update;
+  delete;
+}

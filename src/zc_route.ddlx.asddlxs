@@ -1,0 +1,43 @@
+@Metadata.layer: #CORE
+  @UI: {
+  headerInfo: {
+  typeName: 'Route',
+  typeNamePlural: 'Routes',
+  title: { type: #STANDARD, value: 'Routedescription' }
+  }
+}
+annotate view zc_route
+    with 
+{
+@UI.facet: [{ id: 'Route' ,
+               purpose: #STANDARD,
+               type: #IDENTIFICATION_REFERENCE,
+               label: 'Route',
+               position: 10
+               },
+    {
+      id: 'Details',
+      purpose: #STANDARD,
+      type: #LINEITEM_REFERENCE,
+      label: 'Route Details',
+      position: 20,
+      targetElement: '_Detail'
+    }]
+    
+  @UI: {
+    identification: [{position: 10 , label: 'Route'}] ,
+    lineItem: [{ position: 10 , importance: #HIGH }]}
+  Route;  
+    @UI: {
+    lineItem: [{ position: 20 , importance: #HIGH }],
+    identification: [{position: 20 , label: 'Route Description'}],
+    selectionField: [{position: 20 }] }
+  Routedescription;
+    @UI: {
+    lineItem: [{ position: 30 , importance: #HIGH }],
+    identification: [{position: 30 , label: 'Sales Employee'}],
+    selectionField: [{position: 30 }] }
+  Salesemployee;   
+    
+    
+}

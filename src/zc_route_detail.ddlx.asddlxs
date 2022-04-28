@@ -1,0 +1,41 @@
+@Metadata.layer: #CORE
+annotate view zc_route_detail
+    with 
+{
+    @UI.facet: [{ id: 'RouteDetail' ,
+               purpose: #STANDARD,
+               type: #IDENTIFICATION_REFERENCE,
+               label: 'Route Detail',
+               position: 10
+               }]
+    @UI: {
+    lineItem: [{ position: 10 , importance: #HIGH }],
+    identification: [{position: 10 , label: 'Route Step'}] }
+  Routestep;  
+    @UI: {
+    lineItem: [{ position: 20 , importance: #HIGH }],
+    identification: [{position: 20 , label: 'Customer ID'}],
+    selectionField: [{position: 20 }] }
+  Customerid;
+    @UI: {
+    lineItem: [{ position: 30 , importance: #HIGH }],
+    identification: [{position: 30 , label: 'Location Address'}],
+    selectionField: [{position: 30 }] }
+  Locationaddress; 
+   @UI: {
+    lineItem: [{ position: 40 , importance: #HIGH }],
+    identification: [{position: 40 , label: 'Longtuide'}],
+    selectionField: [{position: 40 }] }
+  Longtuide; 
+   @UI: {
+    lineItem: [{ position: 50 , importance: #HIGH }],
+    identification: [{position: 50 , label: 'Latituide'}],
+    selectionField: [{position: 50 }] }
+  Latituide; 
+    @UI: {
+    lineItem: [{ position: 60 , importance: #HIGH }],
+    identification: [{position: 60 , label: 'Notes'}] }
+  Notes; 
+  
+     
+}

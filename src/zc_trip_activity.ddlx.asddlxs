@@ -1,0 +1,44 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+  typeName: 'Trip Activity',
+  typeNamePlural: 'Trip Activities',
+  title: { type: #STANDARD, value: 'Tripstep' },
+  description:{ value: 'CustomerName' }
+  }
+  }
+annotate view zc_trip_activity
+    with 
+{
+    @UI.facet: [{ id: 'TripActivity' ,
+               purpose: #STANDARD,
+               type: #IDENTIFICATION_REFERENCE,
+               label: 'Trip Activity',
+               position: 10
+               }]
+     @UI: {
+    identification: [{position: 10  }] ,
+    lineItem: [{ position: 10 , importance: #HIGH }]}
+     Routeuuid; 
+     @UI: {
+    identification: [{position: 20 }] ,
+    lineItem: [{ position: 20 , importance: #HIGH }]}
+     Tripid; 
+     @UI: {
+    identification: [{position: 30 }] ,
+    lineItem: [{ position: 30 , importance: #HIGH }]}
+     Tripstep; 
+     @UI: {
+    identification: [{position: 40  }] ,
+    lineItem: [{ position: 40 , importance: #HIGH }]}
+     Tripactivity;
+      @UI: {
+    identification: [{position: 50 }] ,
+    lineItem: [{ position: 50 , importance: #HIGH }]}
+     Activitytype;
+     @UI: {
+    identification: [{position: 60 }] ,
+    lineItem: [{ position: 60 , importance: #HIGH }]}
+     Activitydetail;
+    
+}

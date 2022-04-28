@@ -1,0 +1,84 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+  typeName: 'Trip',
+  typeNamePlural: 'Trips',
+  title: { type: #STANDARD, value: 'Tripid' },
+  description:{ value: 'Routedescription' }
+  }
+  }
+annotate view zc_trip
+    with 
+{
+    @UI.facet: [{ id: 'Trip' ,
+               purpose: #STANDARD,
+               type: #IDENTIFICATION_REFERENCE,
+               label: 'Trip',
+               position: 10
+               },
+               {
+      id: 'Details',
+      purpose: #STANDARD,
+      type: #LINEITEM_REFERENCE,
+      label: 'Trip Details',
+      position: 20,
+      targetElement: '_TripDetail'
+    }]
+    
+     @UI: {
+    identification: [{position: 10 }] ,
+    lineItem: [{ position: 10 , importance: #HIGH }]}
+     Tripuuid; 
+     @UI: {
+    identification: [{position: 20 }] ,
+    lineItem: [{ position: 20 , importance: #HIGH }],
+    selectionField: [{position: 20 }]}
+     Tripid; 
+     @UI: {
+    identification: [{position: 30 , criticality: 'Criticality'},
+                     { type: #FOR_ACTION, dataAction: 'startTrip', label: 'Start Trip' },
+                     { type: #FOR_ACTION, dataAction: 'endTrip',   label: 'End Trip' }] ,
+    lineItem: [{ position: 30 , importance: #HIGH , criticality: 'Criticality'},
+                { type: #FOR_ACTION, dataAction: 'startTrip', label: 'Start Trip' },
+                { type: #FOR_ACTION, dataAction: 'endTrip', label: 'End Trip' }],
+     textArrangement: #TEXT_ONLY,           
+    selectionField: [{position: 30 }]}
+     Tripstatus; 
+     @UI: {
+    identification: [{position: 40  }] ,
+    lineItem: [{ position: 40 , importance: #HIGH }],
+    selectionField: [{position: 20 }]}
+     Startdate;
+      @UI: {
+    identification: [{position: 50 }] ,
+    lineItem: [{ position: 50 , importance: #HIGH }],
+    selectionField: [{position: 20 }]}
+     Starttime;
+      @UI: {
+    identification: [{position: 60 }] ,
+    lineItem: [{ position: 60 , importance: #HIGH }],
+    selectionField: [{position: 20 }]}
+     Enddate;
+      @UI: {
+    identification: [{position: 70 }] ,
+    lineItem: [{ position: 70 , importance: #HIGH }],
+    selectionField: [{position: 20 }]}
+     Endtime;
+       @UI: {
+    identification: [{position: 80 }] ,
+    lineItem: [{ position: 80 , importance: #HIGH }],
+    selectionField: [{position: 20 }]}
+     Routeuuid;
+     @UI: {
+    identification: [{position: 90 }] ,
+    lineItem: [{ position: 90 , importance: #HIGH }],
+    selectionField: [{position: 90 }]}
+     Routedescription;  
+    
+     
+     
+      
+      
+               
+    
+}
